@@ -333,6 +333,64 @@
         }
 
         /* ── CONSULTING PAGE ── */
+        /* ── EBOOK STORE ── */
+        .ebook-store-hero{
+            background:linear-gradient(135deg,#1A5276 0%,#E67E22 100%);
+            color:white;padding:32px 20px;text-align:center;border-radius:var(--radius-lg);margin-bottom:24px;
+        }
+        .ebook-store-hero h2{font-size:26px;font-weight:800;margin-bottom:8px}
+        .ebook-store-hero p{font-size:14px;opacity:0.9;max-width:500px;margin:0 auto}
+        .ebook-section-title{
+            font-size:20px;font-weight:700;color:var(--blue);margin:28px 0 16px;
+            padding-left:12px;border-left:4px solid var(--orange);display:flex;align-items:center;gap:8px;
+        }
+        .ebook-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:24px}
+        @media(min-width:600px){.ebook-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(min-width:900px){.ebook-grid{grid-template-columns:repeat(3,1fr)}}
+        .ebook-card{
+            background:white;border-radius:var(--radius);padding:0;overflow:hidden;
+            box-shadow:var(--shadow);transition:var(--transition);border:2px solid transparent;
+            display:flex;flex-direction:column;
+        }
+        .ebook-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--orange)}
+        .ebook-card-accent{height:6px;width:100%}
+        .ebook-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+        .ebook-card-emoji{font-size:40px;margin-bottom:10px;display:block}
+        .ebook-card-body h4{font-size:16px;font-weight:700;color:var(--gray-800);margin-bottom:6px;line-height:1.4}
+        .ebook-card-body p{font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:14px;flex:1}
+        .ebook-price-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+        .ebook-price{
+            background:var(--orange);color:white;font-size:16px;font-weight:800;
+            padding:4px 14px;border-radius:20px;white-space:nowrap;
+        }
+        .ebook-buy-btn{
+            display:inline-flex;align-items:center;gap:6px;
+            background:var(--blue);color:white;border:none;padding:10px 20px;
+            border-radius:24px;font-size:14px;font-weight:600;cursor:pointer;
+            transition:var(--transition);text-decoration:none;white-space:nowrap;
+        }
+        .ebook-buy-btn:hover{background:var(--blue-light);transform:translateY(-1px);text-decoration:none;color:white}
+        .ebook-bundle{
+            background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border:2px dashed var(--orange);
+            border-radius:var(--radius);padding:20px;text-align:center;margin:24px 0;
+        }
+        .ebook-bundle h3{font-size:18px;color:var(--orange-dark);font-weight:800;margin-bottom:6px}
+        .ebook-bundle p{font-size:14px;color:var(--gray-600);margin-bottom:12px}
+        .ebook-bundle .bundle-price{font-size:28px;font-weight:900;color:var(--orange)}
+        .ebook-bundle .bundle-original{text-decoration:line-through;color:var(--gray-400);font-size:16px;margin-right:8px}
+        .ebook-wechat-section{
+            background:white;border-radius:var(--radius);padding:24px;text-align:center;
+            box-shadow:var(--shadow);margin-top:24px;
+        }
+        .ebook-wechat-section h3{font-size:18px;color:var(--blue);margin-bottom:8px}
+        .ebook-banner{
+            display:block;background:linear-gradient(90deg,#E67E22,#F39C12);color:white;
+            text-align:center;padding:10px 16px;font-size:14px;font-weight:600;
+            cursor:pointer;transition:var(--transition);border-radius:var(--radius);
+            margin:16px 16px 0;text-decoration:none;
+        }
+        .ebook-banner:hover{opacity:0.9;transform:translateY(-1px);text-decoration:none;color:white}
+
         .consult-hero{
             background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%);
             color:white;border-radius:var(--radius);padding:32px 24px;text-align:center;margin-bottom:24px;
@@ -437,7 +495,7 @@
             </div>
         </div>
         <div class="header-right">
-            <button class="consult-btn" onclick="switchPage('consulting')" data-i18n="nav_consult">预约咨询</button>
+            <button class="consult-btn" onclick="switchPage('consulting')" data-i18n="nav_consult">&#128218; &#30005;&#23376;&#20070;</button>
             <div class="lang-toggle">
                 <button class="lang-btn active" onclick="setLang('zh')">中文</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -450,7 +508,7 @@
         <button onclick="switchPage('services')" data-nav="services" data-i18n="nav_services">生活服务</button>
         <button onclick="switchPage('map')" data-nav="map" data-i18n="nav_map">亲子地图</button>
         <button onclick="switchPage('guides')" data-nav="guides" data-i18n="nav_guides">实用指南</button>
-        <button onclick="switchPage('consulting')" data-nav="consulting" data-i18n="nav_consult">咨询服务</button>
+        <button onclick="switchPage('consulting')" data-nav="consulting" data-i18n="nav_consult">&#128218; &#30005;&#23376;&#20070;</button>
     </nav>
 </header>
 
@@ -465,6 +523,8 @@
             <input type="text" id="globalSearch" data-i18n-ph="search_ph" placeholder="搜索服务、场地、指南..." onkeyup="handleGlobalSearch(event)">
         </div>
     </section>
+
+    <a class="ebook-banner" onclick="switchPage('consulting');return false;" href="#">&#128218; &#26032;&#19978;&#26550;&#65306;10&#26412;&#33655;&#20848;&#29983;&#27963;&#30005;&#23376;&#20070;&#65292;&#27599;&#26412;&#20165;&euro;2 &#8212; &#31435;&#21363;&#36873;&#36141; New: 10 Ebooks, only &euro;2 each &rarr;</a>
 
     <div class="page-container">
         <div class="quick-services">
@@ -513,9 +573,9 @@
                 <p data-i18n="feat_first_desc">刚到荷兰第一周必做清单</p>
             </div>
             <div class="feat-card" onclick="switchPage('consulting')">
-                <span class="feat-icon">&#128214;</span>
-                <h4 data-i18n="feat_ebook">电子书</h4>
-                <p data-i18n="feat_ebook_desc">《2026荷兰新生活指南》一本搞定</p>
+                <span class="feat-icon">&#128218;</span>
+                <h4 data-i18n="feat_ebook">电子书商店</h4>
+                <p data-i18n="feat_ebook_desc">10本荷兰生活指南，中英文，每本仅€2</p>
             </div>
             <div class="feat-card" onclick="switchPage('guides');openGuideByIdx(5)">
                 <span class="feat-icon">&#127880;</span>
@@ -623,48 +683,185 @@
 <!-- ═══════════ CONSULTING PAGE ═══════════ -->
 <div class="page-view" id="page-consulting">
     <div class="page-container" style="padding-top:20px;padding-bottom:40px">
-        <div class="consult-hero">
-            <h2 data-i18n="con_hero_title">让你的荷兰新生活，少走弯路</h2>
-            <p data-i18n="con_hero_desc">我们是扎根荷兰多年的华人生活顾问团队，提供专业、贴心的一站式咨询服务</p>
+        <div class="ebook-store-hero">
+            <h2>&#128218; &#30005;&#23376;&#20070;&#21830;&#24215; / Ebook Store</h2>
+            <p>&#33655;&#20848;&#29983;&#27963;&#23454;&#29992;&#25351;&#21335;&#31995;&#21015; &#8212; &#27599;&#26412;&#20165;&#8364;2&#65292;&#21161;&#20320;&#24555;&#36895;&#34701;&#20837;&#33655;&#20848;&#29983;&#27963;</p>
         </div>
 
-        <div class="consult-card">
-            <h3 data-i18n="con_ebook_title">&#128214; 《2026荷兰新生活指南》电子书</h3>
-            <div class="cc-price">&euro;24.99</div>
-            <div class="cc-desc" data-i18n="con_ebook_desc">
-                100+ 页全面指南，涵盖从落地到安家的方方面面。定期更新，一次购买终身有效。
+        <!-- Chinese Ebooks -->
+        <div class="ebook-section-title">&#127464;&#127475; &#20013;&#25991;&#30005;&#23376;&#20070; Chinese Ebooks</div>
+        <div class="ebook-grid">
+            <!-- 1. Dutch Life Guide -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#E67E22,#F39C12)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127758;</span>
+                    <h4>&#33655;&#20848;&#26032;&#29983;&#27963;&#23436;&#20840;&#25351;&#21335;</h4>
+                    <p>&#20174;&#33853;&#22320;&#21040;&#23433;&#23478;&#65292;&#28085;&#30422;BSN&#12289;DigiD&#12289;&#20445;&#38505;&#12289;&#31199;&#25151;&#12289;&#21150;&#20107;&#20840;&#27969;&#31243;&#12290;&#26032;&#20154;&#24517;&#22791;&#31532;&#19968;&#26412;&#20070;&#12290;</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/DutchLifeGuide" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
+                    </div>
+                </div>
             </div>
-            <ul>
-                <li data-i18n="con_ebook_f1">详细的办事流程图解</li>
-                <li data-i18n="con_ebook_f2">各城市生活成本对比</li>
-                <li data-i18n="con_ebook_f3">200+ 实用链接合集</li>
-                <li data-i18n="con_ebook_f4">免费获取未来更新</li>
-            </ul>
-            <div class="cc-price">&euro;5 <span style="font-size:14px;font-weight:400;color:var(--gray-600)">一次购买，终身更新</span></div>
-            <a href="https://xinaliu.gumroad.com/l/DutchLifeGuide" class="cta-btn" id="gumroadBtn" target="_blank" rel="sponsored" data-i18n="con_buy">购买电子书 €2</a>
-            <div style="margin-top:12px;text-align:center">
-                <span style="font-size:12px;color:var(--gray-500)">支持 Visa / MasterCard / PayPal / 支付宝</span>
+            <!-- 2. Healthcare -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#2471A3,#3498DB)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127973;</span>
+                    <h4>&#33655;&#20848;&#21307;&#30103;&#29983;&#23384;&#25163;&#20876;</h4>
+                    <p>&#23478;&#24237;&#21307;&#29983;&#12289;&#24613;&#35786;&#12289;&#29273;&#21307;&#12289;&#33647;&#25151;&#12289;&#20445;&#38505;&#29702;&#36180;&#8230;&#30475;&#25026;&#33655;&#20848;&#21307;&#30103;&#20307;&#31995;&#65292;&#30475;&#30149;&#19981;&#20877;&#24908;&#12290;</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/paohxj" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 3. Housing -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#27AE60,#2ECC71)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127968;</span>
+                    <h4>&#33655;&#20848;&#31199;&#25151;&#36991;&#22353;&#25351;&#21335;</h4>
+                    <p>Funda&#12289;Pararius&#20840;&#35299;&#26512;&#65292;&#38450;&#39575;&#31192;&#31821;&#12289;&#21512;&#21516;&#35201;&#28857;&#12289;&#31199;&#25151;&#34917;&#36148;&#30003;&#35831;&#19968;&#32593;&#25171;&#23613;&#12290;</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/xzjkej" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 4. Kids -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#E91E8C,#FF6FB5)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#128118;</span>
+                    <h4>&#33655;&#20848;&#24102;&#23043;&#20840;&#25915;&#30053;</h4>
+                    <p>&#32946;&#20799;&#34917;&#36148;&#12289;&#25176;&#20799;&#25152;&#12289;&#23398;&#26657;&#36873;&#25321;&#12289;&#20146;&#23376;&#27963;&#21160;&#8230;&#22312;&#33655;&#20848;&#24102;&#23043;&#30340;&#36148;&#24515;&#25351;&#21335;&#12290;</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/vuaxf" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 5. Save Money -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#D4AC0D,#F1C40F)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#128176;</span>
+                    <h4>&#33655;&#20848;&#30465;&#38065;&#25163;&#20876;</h4>
+                    <p>&#31246;&#21153;&#20248;&#21270;&#12289;&#34917;&#36148;&#30003;&#35831;&#12289;&#25240;&#25187;&#31192;&#31821;&#12289;&#20108;&#25163;&#28120;&#23453;&#8230;&#22312;&#33655;&#20848;&#32874;&#26126;&#29983;&#27963;&#30465;&#26356;&#22810;&#12290;</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/docirr" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="consult-card">
-            <h3>💳 微信支付购买电子书</h3>
-            <div class="cc-desc">中国用户可扫码微信支付 ¥35（≈€5），付款后添加微信即可获取电子书。</div>
+        <!-- Bundle -->
+        <div class="ebook-bundle">
+            <h3>&#127873; &#22871;&#39184;&#20248;&#24800; Bundle Deal</h3>
+            <p>&#20840;&#37096;5&#26412;&#20013;&#25991;&#30005;&#23376;&#20070;&#25171;&#21253;&#36141;&#20080;</p>
+            <div><span class="bundle-original">&euro;10</span><span class="bundle-price">&euro;8</span></div>
+            <div style="margin-top:12px">
+                <a href="https://xinaliu.gumroad.com/l/DutchLifeGuide" class="ebook-buy-btn" target="_blank" rel="sponsored" style="background:var(--orange)">&#128293; &#25235;&#21253;&#36141;&#20080; Bundle Buy &rarr;</a>
+            </div>
+            <div style="margin-top:8px;font-size:12px;color:var(--gray-600)">&#32852;&#31995;&#24494;&#20449;&#33719;&#21462;&#22871;&#39184;&#20248;&#24800;&#38142;&#25509;</div>
+        </div>
+
+        <!-- English Ebooks -->
+        <div class="ebook-section-title">&#127468;&#127463; English Ebooks</div>
+        <div class="ebook-grid">
+            <!-- 6. Complete Guide -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#E67E22,#F39C12)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127758;</span>
+                    <h4>Complete Guide to Living in NL</h4>
+                    <p>Everything you need for your new life in the Netherlands: BSN, DigiD, insurance, housing, and all essential procedures.</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/rjlljr" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 7. Healthcare -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#2471A3,#3498DB)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127973;</span>
+                    <h4>NL Healthcare Survival Guide</h4>
+                    <p>Navigate Dutch healthcare with confidence: GP system, emergency care, dental, pharmacy, and insurance claims.</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/bqfap" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 8. Housing -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#27AE60,#2ECC71)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#127968;</span>
+                    <h4>NL Housing and Rental Guide</h4>
+                    <p>Master Funda &amp; Pararius, avoid scams, understand contracts, and apply for rental subsidies like a local.</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/inleh" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 9. Kids -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#E91E8C,#FF6FB5)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#128118;</span>
+                    <h4>Raising Kids in NL</h4>
+                    <p>Child benefits, daycare, school selection, family activities &mdash; your caring guide to parenting in the Netherlands.</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/qilddn" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 10. Save Money -->
+            <div class="ebook-card">
+                <div class="ebook-card-accent" style="background:linear-gradient(90deg,#D4AC0D,#F1C40F)"></div>
+                <div class="ebook-card-body">
+                    <span class="ebook-card-emoji">&#128176;</span>
+                    <h4>Save Money in NL</h4>
+                    <p>Tax optimization, subsidies, discount secrets, second-hand tips &mdash; live smart and save more in the Netherlands.</p>
+                    <div class="ebook-price-row">
+                        <span class="ebook-price">&euro;2</span>
+                        <a href="https://xinaliu.gumroad.com/l/elejsk" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment info -->
+        <div style="text-align:center;margin:20px 0 8px;font-size:13px;color:var(--gray-600)">
+            &#128179; Gumroad &#25903;&#25345; Visa / MasterCard / PayPal
+        </div>
+
+        <!-- WeChat payment -->
+        <div class="ebook-wechat-section">
+            <h3>&#128242; &#24494;&#20449;&#25903;&#20184; / WeChat Pay</h3>
+            <p style="font-size:13px;color:var(--gray-600);margin-bottom:14px">&#20013;&#22269;&#29992;&#25143;&#21487;&#25195;&#30721;&#24494;&#20449;&#25903;&#20184;&#65292;&#20184;&#27454;&#21518;&#28155;&#21152;&#24494;&#20449;&#33719;&#21462;&#30005;&#23376;&#20070;</p>
+            <div style="text-align:center;padding:8px 0">
+                <img src="wechat-pay.jpg" alt="&#24494;&#20449;&#25903;&#20184;" style="width:200px;height:200px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+            </div>
+            <div style="text-align:center;font-size:12px;color:var(--gray-400);margin-top:8px">&#25195;&#30721;&#25903;&#20184; &#8594; &#28155;&#21152;&#24494;&#20449; &#8594; &#33719;&#21462;&#30005;&#23376;&#20070;</div>
+        </div>
+
+        <!-- WeChat group -->
+        <div class="consult-card" style="margin-top:20px">
+            <h3>&#128587; &#21152;&#20837;&#33655;&#20848;&#21326;&#20154;&#23478;&#38271;&#32676;</h3>
+            <div class="cc-desc">&#19982;&#25968;&#21315;&#21517;&#22312;&#33655;&#21326;&#20154;&#23478;&#38271;&#20114;&#21161;&#20132;&#27969;&#65292;&#20998;&#20139;&#32946;&#20799;&#32463;&#39564;&#12289;&#23398;&#26657;&#36873;&#25321;&#12289;&#20146;&#23376;&#27963;&#21160;&#20449;&#24687;&#12290;</div>
             <div style="text-align:center;padding:16px 0">
-                <img src="wechat-pay.jpg" alt="微信支付" style="width:200px;height:200px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
+                <img src="wechat-pay.jpg" alt="&#24494;&#20449;&#20108;&#32500;&#30721;" style="width:180px;height:180px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
             </div>
-            <div style="text-align:center;font-size:13px;color:var(--gray-500)">扫码支付 → 添加微信 → 获取电子书</div>
-        </div>
-
-        <div class="consult-card">
-            <h3 data-i18n="con_wechat_title">&#128587; 加入荷兰华人家长群</h3>
-            <div class="cc-desc" data-i18n="con_wechat_desc">
-                与数千名在荷华人家长互助交流，分享育儿经验、学校选择、亲子活动信息。
-            </div>
-            <div style="text-align:center;padding:16px 0">
-                <img src="wechat-pay.jpg" alt="微信二维码" style="width:180px;height:180px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1)">
-            </div>
-            <div style="text-align:center;font-size:13px;color:var(--gray-500)">扫码添加微信，邀请入群</div>
+            <div style="text-align:center;font-size:13px;color:var(--gray-500)">&#25195;&#30721;&#28155;&#21152;&#24494;&#20449;&#65292;&#36992;&#35831;&#20837;&#32676;</div>
         </div>
     </div>
 </div>
@@ -767,8 +964,8 @@
         <span data-i18n="nav_guides">指南</span>
     </button>
     <button class="nav-item" onclick="switchPage('consulting')" data-nav="consulting">
-        <span class="nav-icon">&#128172;</span>
-        <span data-i18n="nav_consult_short">咨询</span>
+        <span class="nav-icon">&#128218;</span>
+        <span data-i18n="nav_consult_short">&#30005;&#23376;&#20070;</span>
     </button>
 </nav>
 
@@ -783,7 +980,7 @@
 var I18N = {
   zh: {
     brand:'荷生活 2.0', nav_home:'首页', nav_services:'服务', nav_map:'地图',
-    nav_guides:'指南', nav_consult:'咨询服务', nav_consult_short:'咨询',
+    nav_guides:'指南', nav_consult:'\u{1F4DA} 电子书', nav_consult_short:'电子书',
     hero_title:'在荷兰，从此不迷路', hero_sub:'华人一站式生活平台 \u00b7 生活服务 + 亲子探索 + 实用指南',
     hero_tag:'已服务 10,000+ 荷兰华人家庭',
     search_ph:'搜索服务、场地、指南...',
@@ -791,7 +988,8 @@ var I18N = {
     svc_grocery:'中超购物', svc_transport:'出行交通', svc_finance:'金融保险',
     feat_title:'精选推荐', feat_map:'亲子地图', feat_map_desc:'250+ 荷兰亲子场地，动物园、博物馆、游乐场一网打尽',
     feat_first:'新人指南', feat_first_desc:'刚到荷兰第一周必做清单',
-    feat_consult:'1对1咨询', feat_consult_desc:'资深华人顾问，解答你的一切问题',
+    feat_consult:'电子书商店', feat_consult_desc:'10本荷兰生活指南，中英文，每本仅€2',
+    feat_ebook:'电子书商店', feat_ebook_desc:'10本荷兰生活指南，中英文，每本仅€2',
     feat_festival:'节日日历', feat_festival_desc:'2026荷兰重要节日与学校假期',
     email_title:'订阅荷兰生活周刊', email_desc:'每周精选实用资讯、优惠信息、亲子活动推荐，直送邮箱', email_btn:'订阅',
     emergency_title:'紧急电话', emergency_call:'紧急情况？请拨打：',
@@ -818,7 +1016,7 @@ var I18N = {
   },
   en: {
     brand:'HollandLife 2.0', nav_home:'Home', nav_services:'Services', nav_map:'Kids Map',
-    nav_guides:'Guides', nav_consult:'Consulting', nav_consult_short:'Consult',
+    nav_guides:'Guides', nav_consult:'\u{1F4DA} Ebooks', nav_consult_short:'Ebooks',
     hero_title:'Never Lost in the Netherlands', hero_sub:'All-in-one platform for Chinese in NL \u00b7 Services + Kids Map + Guides',
     hero_tag:'Serving 10,000+ Chinese families in NL',
     search_ph:'Search services, venues, guides...',
@@ -826,7 +1024,8 @@ var I18N = {
     svc_grocery:'Asian Grocery', svc_transport:'Transport', svc_finance:'Banking',
     feat_title:'Featured', feat_map:'Kids Map', feat_map_desc:'250+ family venues: zoos, museums, playgrounds & more',
     feat_first:'Newcomer Guide', feat_first_desc:'First week checklist for new arrivals',
-    feat_consult:'1-on-1 Consulting', feat_consult_desc:'Experienced advisors answer all your questions',
+    feat_consult:'Ebook Store', feat_consult_desc:'10 Dutch life guides in Chinese & English, only \u20AC2 each',
+    feat_ebook:'Ebook Store', feat_ebook_desc:'10 Dutch life guides in Chinese & English, only \u20AC2 each',
     feat_festival:'Festival Calendar', feat_festival_desc:'2026 Dutch holidays & school breaks',
     email_title:'Subscribe to Weekly Newsletter', email_desc:'Curated tips, deals, and family activities delivered to your inbox', email_btn:'Subscribe',
     emergency_title:'Emergency Numbers', emergency_call:'Emergency? Call:',
@@ -853,7 +1052,7 @@ var I18N = {
   },
   nl: {
     brand:'HollandLife 2.0', nav_home:'Home', nav_services:'Diensten', nav_map:'Kinderkaart',
-    nav_guides:'Gidsen', nav_consult:'Advies', nav_consult_short:'Advies',
+    nav_guides:'Gidsen', nav_consult:'\u{1F4DA} eBooks', nav_consult_short:'eBooks',
     hero_title:'Nooit meer verdwaald in Nederland', hero_sub:'Alles-in-\u00e9\u00e9n platform \u00b7 Diensten + Kinderkaart + Gidsen',
     hero_tag:'Al 10.000+ Chinese gezinnen geholpen',
     search_ph:'Zoek diensten, locaties, gidsen...',
@@ -861,7 +1060,8 @@ var I18N = {
     svc_grocery:'Aziatische Winkel', svc_transport:'Vervoer', svc_finance:'Bank & Verzekering',
     feat_title:'Uitgelicht', feat_map:'Kinderkaart', feat_map_desc:'250+ gezinslocaties: dierentuinen, musea, speeltuinen',
     feat_first:'Nieuwkomersgids', feat_first_desc:'Eerste week checklist',
-    feat_consult:'1-op-1 Advies', feat_consult_desc:'Ervaren adviseurs beantwoorden al uw vragen',
+    feat_consult:'eBook Winkel', feat_consult_desc:'10 gidsen in Chinees & Engels, slechts \u20AC2 per stuk',
+    feat_ebook:'eBook Winkel', feat_ebook_desc:'10 gidsen in Chinees & Engels, slechts \u20AC2 per stuk',
     feat_festival:'Feestkalender', feat_festival_desc:'2026 Nederlandse feestdagen & schoolvakanties',
     email_title:'Abonneer op de Weekbrief', email_desc:'Tips, aanbiedingen en gezinsactiviteiten in uw inbox', email_btn:'Abonneer',
     emergency_title:'Alarmnummers', emergency_call:'Noodgeval? Bel:',
