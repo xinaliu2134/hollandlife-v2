@@ -76,6 +76,48 @@
         }
         .lang-btn.active{background:var(--orange);color:white}
 
+        /* ── ABOUT AUTHOR ── */
+        .author-section{
+            background:white;border-radius:var(--radius);padding:28px 24px;
+            box-shadow:var(--shadow);margin:24px 0;position:relative;overflow:hidden;
+        }
+        .author-section::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:4px;
+            background:linear-gradient(90deg,var(--orange),var(--blue-light));
+        }
+        .author-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+        .author-avatar{
+            width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--teal));
+            display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;
+        }
+        .author-name{font-size:18px;font-weight:700;color:var(--blue)}
+        .author-title{font-size:13px;color:var(--gray-600);margin-top:2px}
+        .author-body{font-size:14px;color:var(--gray-600);line-height:1.8}
+        .author-body p{margin-bottom:10px}
+        .author-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+        .author-tag{
+            display:inline-block;padding:4px 12px;border-radius:16px;font-size:12px;
+            font-weight:600;background:var(--gray-100);color:var(--blue);
+        }
+        .author-cta{
+            display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+            background:var(--orange);color:white;border:none;padding:10px 22px;
+            border-radius:24px;font-size:14px;font-weight:600;cursor:pointer;
+            transition:var(--transition);text-decoration:none;
+        }
+        .author-cta:hover{background:var(--orange-dark);transform:translateY(-1px);text-decoration:none;color:white}
+        .hero-credential{
+            font-size:13px;opacity:0.85;margin-top:4px;position:relative;
+            display:inline-block;padding:3px 14px;background:rgba(255,255,255,0.15);
+            border-radius:16px;
+        }
+        .experience-tip{
+            background:linear-gradient(135deg,#FFF8E1,#FFF3E0);border-left:4px solid var(--orange);
+            border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13px;
+            color:var(--gray-800);line-height:1.6;
+        }
+        .experience-tip strong{color:var(--orange-dark)}
+
         /* ── BOTTOM NAV ── */
         .bottom-nav{
             position:fixed;bottom:0;left:0;right:0;z-index:1000;
@@ -518,6 +560,7 @@
         <h1 data-i18n="hero_title">在荷兰，从此不迷路</h1>
         <p class="subtitle" data-i18n="hero_sub">华人一站式生活平台 · 生活服务 + 亲子探索 + 实用指南</p>
         <p class="tagline" data-i18n="hero_tag">已服务 10,000+ 荷兰华人家庭</p>
+        <span class="hero-credential" data-i18n="hero_credential">由在荷兰生活15年的北大医学博士整理</span>
         <div class="search-box">
             <span class="s-icon">&#128269;</span>
             <input type="text" id="globalSearch" data-i18n-ph="search_ph" placeholder="搜索服务、场地、指南..." onkeyup="handleGlobalSearch(event)">
@@ -591,6 +634,28 @@
                 <input type="email" placeholder="your@email.com">
                 <button onclick="alert(getLang()==='zh'?'感谢订阅！我们会尽快联系您。':'Thank you! We will be in touch soon.')" data-i18n="email_btn">订阅</button>
             </div>
+        </div>
+
+        <!-- About the Author -->
+        <div class="author-section">
+            <div class="author-header">
+                <div class="author-avatar">&#128105;&#8205;&#9877;&#65039;</div>
+                <div>
+                    <div class="author-name" data-i18n="author_name">Nana / 娜娜</div>
+                    <div class="author-title" data-i18n="author_title">北大医学 &#8594; Erasmus PhD &#8594; 荷兰15年</div>
+                </div>
+            </div>
+            <div class="author-body">
+                <p data-i18n="author_bio">我是Nana，北京大学医学部毕业后来到荷兰Erasmus大学攻读博士，在荷兰已经生活了15年。从初来乍到时的迷茫，到买房、生娃、孩子上学，荷兰生活的方方面面我都亲身经历过。所有指南都来自真实经验，不是网上复制粘贴。</p>
+                <p data-i18n="author_bio2">创建HollandLife，是因为我深知在荷兰落地安家有多不容易——希望这些我花了15年积累的经验，能帮你少走弯路。</p>
+            </div>
+            <div class="author-tags">
+                <span class="author-tag" data-i18n="author_tag1">&#127891; 北大医学博士</span>
+                <span class="author-tag" data-i18n="author_tag2">&#127758; 旅荷15年</span>
+                <span class="author-tag" data-i18n="author_tag3">&#128118; 荷兰妈妈</span>
+                <span class="author-tag" data-i18n="author_tag4">&#127968; 在荷置业</span>
+            </div>
+            <a class="author-cta" href="https://xinaliu.gumroad.com" target="_blank" rel="sponsored" data-i18n="author_cta">&#128218; 查看我的电子书 &#8594;</a>
         </div>
 
         <h2 class="section-title" data-i18n="emergency_title">紧急电话</h2>
@@ -685,7 +750,7 @@
     <div class="page-container" style="padding-top:20px;padding-bottom:40px">
         <div class="ebook-store-hero">
             <h2>&#128218; &#30005;&#23376;&#20070;&#21830;&#24215; / Ebook Store</h2>
-            <p>&#33655;&#20848;&#29983;&#27963;&#23454;&#29992;&#25351;&#21335;&#31995;&#21015; &#8212; &#27599;&#26412;&#20165;&#8364;2&#65292;&#21161;&#20320;&#24555;&#36895;&#34701;&#20837;&#33655;&#20848;&#29983;&#27963;</p>
+            <p>&#22522;&#20110;15&#24180;&#33655;&#20848;&#29983;&#27963;&#30495;&#23454;&#32463;&#39564; &#8212; &#30001;&#21271;&#22823;&#21307;&#23398;&#21338;&#22763;&#20146;&#33258;&#25776;&#20889; &#8212; &#27599;&#26412;&#20165;&euro;2</p>
         </div>
 
         <!-- Chinese Ebooks -->
@@ -697,7 +762,7 @@
                 <div class="ebook-card-body">
                     <span class="ebook-card-emoji">&#127758;</span>
                     <h4>&#33655;&#20848;&#26032;&#29983;&#27963;&#23436;&#20840;&#25351;&#21335;</h4>
-                    <p>&#20174;&#33853;&#22320;&#21040;&#23433;&#23478;&#65292;&#28085;&#30422;BSN&#12289;DigiD&#12289;&#20445;&#38505;&#12289;&#31199;&#25151;&#12289;&#21150;&#20107;&#20840;&#27969;&#31243;&#12290;&#26032;&#20154;&#24517;&#22791;&#31532;&#19968;&#26412;&#20070;&#12290;</p>
+                    <p>&#22522;&#20110;15&#24180;&#20146;&#36523;&#32463;&#21382;&#65292;&#28085;&#30422;BSN&#12289;DigiD&#12289;&#20445;&#38505;&#12289;&#31199;&#25151;&#12289;&#21150;&#20107;&#20840;&#27969;&#31243;&#12290;&#26032;&#20154;&#24517;&#22791;&#31532;&#19968;&#26412;&#20070;&#12290;</p>
                     <div class="ebook-price-row">
                         <span class="ebook-price">&euro;2</span>
                         <a href="https://xinaliu.gumroad.com/l/DutchLifeGuide" class="ebook-buy-btn" target="_blank" rel="sponsored">&#36141;&#20080; Buy &rarr;</a>
@@ -778,7 +843,7 @@
                 <div class="ebook-card-body">
                     <span class="ebook-card-emoji">&#127758;</span>
                     <h4>Complete Guide to Living in NL</h4>
-                    <p>Everything you need for your new life in the Netherlands: BSN, DigiD, insurance, housing, and all essential procedures.</p>
+                    <p>Based on 15 years of real experience. BSN, DigiD, insurance, housing, and all essential procedures. Written by a PKU graduate who went through it all.</p>
                     <div class="ebook-price-row">
                         <span class="ebook-price">&euro;2</span>
                         <a href="https://xinaliu.gumroad.com/l/rjlljr" class="ebook-buy-btn" target="_blank" rel="sponsored">Buy Now &rarr;</a>
@@ -983,6 +1048,12 @@ var I18N = {
     nav_guides:'指南', nav_consult:'\u{1F4DA} 电子书', nav_consult_short:'电子书',
     hero_title:'在荷兰，从此不迷路', hero_sub:'华人一站式生活平台 \u00b7 生活服务 + 亲子探索 + 实用指南',
     hero_tag:'已服务 10,000+ 荷兰华人家庭',
+    hero_credential:'由在荷兰生活15年的北大医学博士整理',
+    author_name:'Nana / 娜娜', author_title:'北大医学 \u2192 Erasmus PhD \u2192 荷兰15年',
+    author_bio:'我是Nana，北京大学医学部毕业后来到荷兰Erasmus大学攻读博士，在荷兰已经生活了15年。从初来乍到时的迷茫，到买房、生娃、孩子上学，荷兰生活的方方面面我都亲身经历过。所有指南都来自真实经验，不是网上复制粘贴。',
+    author_bio2:'创建HollandLife，是因为我深知在荷兰落地安家有多不容易\u2014\u2014希望这些我花了15年积累的经验，能帮你少走弯路。',
+    author_tag1:'\u{1F393} 北大医学博士', author_tag2:'\u{1F30D} 旅荷15年', author_tag3:'\u{1F476} 荷兰妈妈', author_tag4:'\u{1F3E0} 在荷置业',
+    author_cta:'\u{1F4DA} 查看我的电子书 \u2192',
     search_ph:'搜索服务、场地、指南...',
     svc_housing:'找房子', svc_health:'看医生', svc_gov:'办手续',
     svc_grocery:'中超购物', svc_transport:'出行交通', svc_finance:'金融保险',
@@ -1019,6 +1090,12 @@ var I18N = {
     nav_guides:'Guides', nav_consult:'\u{1F4DA} Ebooks', nav_consult_short:'Ebooks',
     hero_title:'Never Lost in the Netherlands', hero_sub:'All-in-one platform for Chinese in NL \u00b7 Services + Kids Map + Guides',
     hero_tag:'Serving 10,000+ Chinese families in NL',
+    hero_credential:'Curated by a PKU Medical PhD with 15 years in the Netherlands',
+    author_name:'Nana', author_title:'PKU Medicine \u2192 Erasmus PhD \u2192 15 years in NL',
+    author_bio:'I\'m Nana. After graduating from Peking University School of Medicine, I came to the Netherlands for my PhD at Erasmus University. I\'ve been living here for 15 years. From the confusion of first arrival to buying property, having a baby, and navigating schools \u2014 I\'ve been through it all. Every guide is based on real experience, not internet copy-paste.',
+    author_bio2:'I created HollandLife because I know how hard it is to settle in the Netherlands \u2014 I hope my 15 years of experience can help you avoid the detours.',
+    author_tag1:'\u{1F393} PKU Medical PhD', author_tag2:'\u{1F30D} 15 years in NL', author_tag3:'\u{1F476} Mom in NL', author_tag4:'\u{1F3E0} Property owner in NL',
+    author_cta:'\u{1F4DA} Browse my ebooks \u2192',
     search_ph:'Search services, venues, guides...',
     svc_housing:'Housing', svc_health:'Healthcare', svc_gov:'Government',
     svc_grocery:'Asian Grocery', svc_transport:'Transport', svc_finance:'Banking',
@@ -1055,6 +1132,12 @@ var I18N = {
     nav_guides:'Gidsen', nav_consult:'\u{1F4DA} eBooks', nav_consult_short:'eBooks',
     hero_title:'Nooit meer verdwaald in Nederland', hero_sub:'Alles-in-\u00e9\u00e9n platform \u00b7 Diensten + Kinderkaart + Gidsen',
     hero_tag:'Al 10.000+ Chinese gezinnen geholpen',
+    hero_credential:'Samengesteld door een PKU Medical PhD met 15 jaar in Nederland',
+    author_name:'Nana', author_title:'PKU Geneeskunde \u2192 Erasmus PhD \u2192 15 jaar in NL',
+    author_bio:'Ik ben Nana. Na mijn studie aan Peking University ben ik naar Nederland gekomen voor mijn PhD aan de Erasmus Universiteit. Ik woon hier al 15 jaar. Alle gidsen zijn gebaseerd op echte ervaring.',
+    author_bio2:'Ik heb HollandLife gemaakt om anderen te helpen met mijn 15 jaar ervaring in Nederland.',
+    author_tag1:'\u{1F393} PKU Medical PhD', author_tag2:'\u{1F30D} 15 jaar in NL', author_tag3:'\u{1F476} Moeder in NL', author_tag4:'\u{1F3E0} Huiseigenaar in NL',
+    author_cta:'\u{1F4DA} Bekijk mijn ebooks \u2192',
     search_ph:'Zoek diensten, locaties, gidsen...',
     svc_housing:'Woning', svc_health:'Zorg', svc_gov:'Overheid',
     svc_grocery:'Aziatische Winkel', svc_transport:'Vervoer', svc_finance:'Bank & Verzekering',
@@ -1172,9 +1255,9 @@ var GUIDES = [
     {icon:'\u{1F4CC}',zh:'\u521a\u5230\u8377\u5170\u7b2c\u4e00\u5468\u8981\u505a\u4ec0\u4e48\uff1f',en:'First week in the Netherlands?',nl:'Eerste week in Nederland?',tag_zh:'\u5fc5\u8bfb',tag_en:'Must Read',tag_nl:'Verplicht',
      body:'<h4>到达后的关键步骤：</h4><div class="step"><span class="step-num">1</span><div class="step-text"><strong>市政厅登记 (Gemeente)</strong><br>到达5天内必须到居住地所在城市的市政厅登记（Inschrijving BRP）。需要携带：护照、签证/居留许可、租房合同、出生证明公证件。登记后会收到BSN号码。<br><em>各城市预约：<a href="https://www.amsterdam.nl/en/civil-affairs/" target="_blank">Amsterdam</a> | <a href="https://www.rotterdam.nl/english/" target="_blank">Rotterdam</a> | <a href="https://www.denhaag.nl/en/" target="_blank">Den Haag</a> | <a href="https://www.utrecht.nl/city-of-utrecht/" target="_blank">Utrecht</a> | <a href="https://www.eindhoven.nl/en" target="_blank">Eindhoven</a></em></div></div><div class="step"><span class="step-num">2</span><div class="step-text"><strong>开银行账户</strong><br>推荐 ING、ABN AMRO 或 Rabobank。需要BSN号码和有效证件。荷兰日常消费以借记卡和iDEAL支付为主，信用卡使用率很低。</div></div><div class="step"><span class="step-num">3</span><div class="step-text"><strong>购买医疗保险</strong><br>荷兰法律规定所有居民必须购买基本医疗保险（Basisverzekering），到达后4个月内必须办好。2026年均价约&euro;159/月，最低约&euro;142/月。自付额(Eigen risico)&euro;385/年。可在 <a href="https://www.independer.nl" target="_blank">Independer.nl</a> 比价。低收入可申请医疗补贴(Zorgtoeslag)。</div></div><div class="step"><span class="step-num">4</span><div class="step-text"><strong>注册家庭医生 (Huisarts)</strong><br>荷兰实行家庭医生制度，建议到达后尽快注册。在 <a href="https://www.zorgkaartnederland.nl" target="_blank">Zorgkaart Nederland</a> 搜索附近家庭医生。</div></div><div class="step"><span class="step-num">5</span><div class="step-text"><strong>办理DigiD</strong><br>DigiD是荷兰电子身份认证系统。有了BSN后即可在 <a href="https://www.digid.nl" target="_blank">digid.nl</a> 申请。激活码会邮寄到你的注册地址，约需1周。之后在 <a href="https://mijn.overheid.nl" target="_blank">MijnOverheid</a> 激活账户接收政府信件。</div></div><div class="step"><span class="step-num">6</span><div class="step-text"><strong>办理公交卡</strong><br>OV-chipkaart正在被OV-pas取代（2027年底前完成）。现在也可以直接用银行卡刷卡乘车(OVpay)。建议办实名卡以使用折扣订阅。</div></div><div class="step"><span class="step-num">7</span><div class="step-text"><strong>申请补贴</strong><br>在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请各类补贴：医疗补贴(Zorgtoeslag)、房租补贴(Huurtoeslag)、育儿补贴(Kinderopvangtoeslag)。需要DigiD登录。</div></div><div class="tip-box">\u{1F4A1} 小贴士：以上所有步骤都需要BSN号码，所以市政厅登记是第一优先级！建议到达前就预约好市政厅时间。</div>'},
     {icon:'\u{1FA7A}',zh:'\u600e\u4e48\u6ce8\u518c\u5bb6\u5ead\u533b\u751f\uff1f',en:'How to register with a GP?',nl:'Hoe schrijf ik me in bij een huisarts?',tag_zh:'\u533b\u7597',tag_en:'Healthcare',tag_nl:'Zorg',
-     body:'<div class="step"><span class="step-num">1</span><div class="step-text"><strong>查找附近的家庭医生</strong><br>在 <a href="https://www.zorgkaartnederland.nl" target="_blank">Zorgkaart Nederland</a> 搜索你所在区域的家庭医生，查看评分和是否接受新患者。</div></div><div class="step"><span class="step-num">2</span><div class="step-text"><strong>致电或在线注册</strong><br>需要提供：BSN号码、保险信息、护照/ID号码、住址。很多诊所有在线注册表。</div></div><div class="step"><span class="step-num">3</span><div class="step-text"><strong>如果被拒怎么办？</strong><br>大城市家庭医生经常满员。多尝试几家，或联系你的医疗保险公司帮忙（他们有义务帮你找到家庭医生）。</div></div><h4>看病费用说明</h4><ul><li>看家庭医生<strong>不需要额外付费</strong>（保险覆盖）</li><li>专科转诊也由保险覆盖，但会计入自付额(Eigen risico &euro;385/年)</li><li>看牙医(Tandarts)需要额外的附加保险(Aanvullende verzekering)</li><li>药品费用大部分由保险覆盖，在药房(Apotheek)凭处方取药</li></ul><h4>夜间/周末急诊</h4><p>非工作时间需要医疗帮助？拨打你家庭医生的电话号码，按语音提示转接到当地Huisartsenpost（HAP）。注意：各地HAP号码不同。</p><div class="tip-box">\u{1F4A1} 看病流程：先打电话给家庭医生预约 \u2192 看家庭医生 \u2192 如需要转诊专科。荷兰不能直接去医院挂号！</div><div class="tip-box">\u{1F4A1} 语言不通怎么办？你有权要求翻译服务。也可以使用 <a href="https://www.thuisarts.nl" target="_blank">Thuisarts.nl</a> 查看症状信息（有英文版）。</div><div class="tip-box">\u{1F4A1} 心理健康：可通过家庭医生转诊心理咨询师。紧急心理危机拨打 <strong>0800-0113</strong>（免费，24小时）。</div>'},
+     body:'<div class="step"><span class="step-num">1</span><div class="step-text"><strong>查找附近的家庭医生</strong><br>在 <a href="https://www.zorgkaartnederland.nl" target="_blank">Zorgkaart Nederland</a> 搜索你所在区域的家庭医生，查看评分和是否接受新患者。</div></div><div class="step"><span class="step-num">2</span><div class="step-text"><strong>致电或在线注册</strong><br>需要提供：BSN号码、保险信息、护照/ID号码、住址。很多诊所有在线注册表。</div></div><div class="step"><span class="step-num">3</span><div class="step-text"><strong>如果被拒怎么办？</strong><br>大城市家庭医生经常满员。多尝试几家，或联系你的医疗保险公司帮忙（他们有义务帮你找到家庭医生）。</div></div><h4>看病费用说明</h4><ul><li>看家庭医生<strong>不需要额外付费</strong>（保险覆盖）</li><li>专科转诊也由保险覆盖，但会计入自付额(Eigen risico &euro;385/年)</li><li>看牙医(Tandarts)需要额外的附加保险(Aanvullende verzekering)</li><li>药品费用大部分由保险覆盖，在药房(Apotheek)凭处方取药</li></ul><h4>夜间/周末急诊</h4><p>非工作时间需要医疗帮助？拨打你家庭医生的电话号码，按语音提示转接到当地Huisartsenpost（HAP）。注意：各地HAP号码不同。</p><div class="tip-box">\u{1F4A1} 看病流程：先打电话给家庭医生预约 \u2192 看家庭医生 \u2192 如需要转诊专科。荷兰不能直接去医院挂号！</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>我在Rotterdam-Zuid注册家庭医生，整个过程大约花了2周。第一家满员被拒，第二家很顺利。建议同时申请2-3家，提高成功率。</div><div class="tip-box">\u{1F4A1} 语言不通怎么办？你有权要求翻译服务。也可以使用 <a href="https://www.thuisarts.nl" target="_blank">Thuisarts.nl</a> 查看症状信息（有英文版）。</div><div class="tip-box">\u{1F4A1} 心理健康：可通过家庭医生转诊心理咨询师。紧急心理危机拨打 <strong>0800-0113</strong>（免费，24小时）。</div>'},
     {icon:'\u{1F3EB}',zh:'\u8377\u5170\u5b66\u6821\u600e\u4e48\u9009\uff1f',en:'How to choose a school in NL?',nl:'Hoe kies ik een school?',tag_zh:'\u6559\u80b2',tag_en:'Education',tag_nl:'Onderwijs',
-     body:'<h4>荷兰学校体系概览</h4><ul><li><strong>Basisschool（小学）</strong>：4-12岁，共8个年级（Groep 1-8）。孩子满4岁当天即可入学！5岁起为义务教育。</li><li><strong>Middelbare school（中学）</strong>：分为VMBO（4年，职业方向）、HAVO（5年，应用型高等教育预备）、VWO（6年，大学预备）三个层次</li><li><strong>国际学校</strong>：英语授课，学费较高（&euro;5,000-25,000/年），适合短期驻荷或希望走国际路线的家庭</li></ul><h4>选校建议</h4><ul><li>在 <a href="https://www.scholenopdekaart.nl" target="_blank">Scholen op de Kaart</a> 查看学校评分、教育质量报告</li><li>荷兰公立学校免费（仅需少量材料费），教育质量整体很高</li><li>如果孩子不会荷兰语，很多学校提供过渡班（Schakelklas/Nieuwkomersklas）</li><li>学校类型有：公立(Openbaar)、新教(Protestants)、天主教(Katholiek)、蒙特梭利(Montessori)、自由学校(Vrije school)等，教学质量差异不大</li></ul><h4>实用链接</h4><ul><li><a href="https://www.scholenopdekaart.nl" target="_blank">Scholen op de Kaart</a> \u2014 学校评分和信息</li><li><a href="https://www.duo.nl" target="_blank">DUO.nl</a> \u2014 教育执行署，学生资助</li><li><a href="https://www.onderwijsinspectie.nl" target="_blank">Onderwijsinspectie.nl</a> \u2014 教育督察署，查看学校评级</li></ul><div class="tip-box">\u{1F4A1} 荷兰学校通常需要提前几个月注册。热门学校甚至在孩子出生后就需要登记！建议一到荷兰就开始看学校。开放日(Open dag)通常在1-3月。</div>'},
+     body:'<h4>荷兰学校体系概览</h4><ul><li><strong>Basisschool（小学）</strong>：4-12岁，共8个年级（Groep 1-8）。孩子满4岁当天即可入学！5岁起为义务教育。</li><li><strong>Middelbare school（中学）</strong>：分为VMBO（4年，职业方向）、HAVO（5年，应用型高等教育预备）、VWO（6年，大学预备）三个层次</li><li><strong>国际学校</strong>：英语授课，学费较高（&euro;5,000-25,000/年），适合短期驻荷或希望走国际路线的家庭</li></ul><h4>选校建议</h4><ul><li>在 <a href="https://www.scholenopdekaart.nl" target="_blank">Scholen op de Kaart</a> 查看学校评分、教育质量报告</li><li>荷兰公立学校免费（仅需少量材料费），教育质量整体很高</li><li>如果孩子不会荷兰语，很多学校提供过渡班（Schakelklas/Nieuwkomersklas）</li><li>学校类型有：公立(Openbaar)、新教(Protestants)、天主教(Katholiek)、蒙特梭利(Montessori)、自由学校(Vrije school)等，教学质量差异不大</li></ul><h4>实用链接</h4><ul><li><a href="https://www.scholenopdekaart.nl" target="_blank">Scholen op de Kaart</a> \u2014 学校评分和信息</li><li><a href="https://www.duo.nl" target="_blank">DUO.nl</a> \u2014 教育执行署，学生资助</li><li><a href="https://www.onderwijsinspectie.nl" target="_blank">Onderwijsinspectie.nl</a> \u2014 教育督察署，查看学校评级</li></ul><div class="tip-box">\u{1F4A1} 荷兰学校通常需要提前几个月注册。热门学校甚至在孩子出生后就需要登记！建议一到荷兰就开始看学校。开放日(Open dag)通常在1-3月。</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>James上的是本地荷兰语学校，从中文环境过渡到荷兰语教学很顺利。孩子的适应能力比大人想象的强很多，不必太担心语言问题。</div>'},
     {icon:'\u{1F930}',zh:'\u5728\u8377\u5170\u751f\u5b69\u5b50\u653b\u7565',en:'Having a baby in the Netherlands',nl:'Baby krijgen in Nederland',tag_zh:'\u4eb2\u5b50',tag_en:'Family',tag_nl:'Gezin',
      body:'<h4>孕期关键步骤</h4><div class="step"><span class="step-num">1</span><div class="step-text"><strong>确认怀孕后</strong>：联系助产士（Verloskundige）。在 <a href="https://www.knov.nl" target="_blank">KNOV.nl</a> 查找附近的助产士。荷兰的孕期检查主要由助产士负责，不是妇科医生。</div></div><div class="step"><span class="step-num">2</span><div class="step-text"><strong>预约Kraamzorg</strong>：产后护理服务，持续约8天，护理员会到家里帮忙照顾产妇和婴儿。<strong>建议怀孕初期就预约</strong>，热门服务商很快满员。费用大部分由医疗保险覆盖！</div></div><div class="step"><span class="step-num">3</span><div class="step-text"><strong>选择分娩方式</strong>：可以选择在家生（thuisbevalling，荷兰特色！）、医院或生育中心。如无医学风险，助产士会指导选择。</div></div><div class="step"><span class="step-num">4</span><div class="step-text"><strong>产前检查</strong>：常规超声检查在第20周，额外检查（如13周NT检查）需单独选择，费用约&euro;200。</div></div><h4>产后必办手续</h4><ul><li><strong>出生后3个工作日内</strong>到市政厅登记出生（Aangifte geboorte）</li><li>申请儿童津贴（Kinderbijslag）：在 <a href="https://www.svb.nl" target="_blank">SVB.nl</a> 申请，每季度发放</li><li>申请托儿所补贴（Kinderopvangtoeslag）：在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请</li><li>到Consultatiebureau（儿童保健中心）登记，定期检查和疫苗接种</li><li>如需中国护照/旅行证：联系中国驻荷使馆</li></ul><div class="tip-box">\u{1F4A1} 产假至少16周，带薪100%。配偶有5天带薪假 + 5周额外假期（薪资70%，由UWV支付）。</div><div class="tip-box">\u{1F4A1} 荷兰有Consultatiebureau免费为0-4岁儿童提供健康检查和疫苗接种服务。</div>'},
     {icon:'\u{1F697}',zh:'\u8377\u5170\u9a7e\u7167\u600e\u4e48\u8003\uff1f',en:'Getting a Dutch driver\'s license',nl:'Rijbewijs halen in Nederland',tag_zh:'\u4ea4\u901a',tag_en:'Transport',tag_nl:'Vervoer',
@@ -1184,7 +1267,7 @@ var GUIDES = [
     {icon:'\u{1F389}',zh:'\u8377\u5170\u8282\u65e5\u65e5\u5386 2026',en:'Dutch holiday calendar 2026',nl:'Nederlandse feestdagenkalender 2026',tag_zh:'\u751f\u6d3b',tag_en:'Lifestyle',tag_nl:'Leven',
      body:'<h4>2026 荷兰公共假日</h4><ul><li><strong>1月1日</strong> \u2014 Nieuwjaarsdag 新年</li><li><strong>4月3日</strong> \u2014 Goede Vrijdag 耶稣受难日</li><li><strong>4月5-6日</strong> \u2014 Pasen 复活节</li><li><strong>4月27日（周一）</strong> \u2014 Koningsdag 国王节（全民摆摊、橙色海洋！）</li><li><strong>5月5日</strong> \u2014 Bevrijdingsdag 解放日</li><li><strong>5月14日（周四）</strong> \u2014 Hemelvaartsdag 耶稣升天日（很多人周五也请假凑长周末）</li><li><strong>5月24-25日</strong> \u2014 Pinksteren 圣灵降临节</li><li><strong>12月5日</strong> \u2014 Sinterklaas 圣尼古拉斯节（孩子最爱！非公共假日但全民庆祝）</li><li><strong>12月25-26日</strong> \u2014 Kerstmis 圣诞节</li></ul><h4>学校假期 (2025-2026学年)</h4><p><em>注意：荷兰分北(Noord)、中(Midden)、南(Zuid)三个区域，假期时间略有不同。</em></p><ul><li><strong>Voorjaarsvakantie 春假</strong> \u2014 北部：2月21日-3月1日 | 中/南部：2月14-22日</li><li><strong>Meivakantie 五月假</strong> \u2014 全国统一：4月25日-5月3日</li><li><strong>Zomervakantie 暑假</strong> \u2014 北部：7月4日-8月16日 | 中部：7月18日-8月30日 | 南部：7月11日-8月23日</li><li><strong>Herfstvakantie 秋假</strong> \u2014 10月中（1周）</li><li><strong>Kerstvakantie 圣诞假</strong> \u2014 12月底（2周）</li></ul><p style="margin-top:8px;font-size:12px;color:var(--gray-400)">详细日期请查看 <a href="https://www.government.nl/topics/school-holidays" target="_blank">government.nl 学校假期页面</a></p><div class="tip-box">\u{1F4A1} Koningsdag是荷兰最大的户外派对！全城变橙色，人人可以在街上摆摊卖东西，带孩子必体验！提前买好橙色衣服。</div>'},
     {icon:'\u{1F4B0}',zh:'\u8377\u5170\u7701\u94b1\u653b\u7565',en:'Money-saving tips in NL',nl:'Geld besparen in NL',tag_zh:'\u7701\u94b1',tag_en:'Savings',tag_nl:'Besparen',
-     body:'<h4>日常生活省钱技巧</h4><ul><li><strong>Too Good To Go</strong> \u2014 APP抢购超市打折食品包，通常"魔法袋"只要&euro;3-5</li><li><strong>Scoupy / Eurosparen</strong> \u2014 超市优惠券和返现APP</li><li><strong>NS Dal Voordeel</strong> \u2014 &euro;6.35/月，火车非高峰时段40%折扣（同行最多3人也享受折扣）</li><li><strong>Museum Kaart</strong> \u2014 &euro;75/年（成人），&euro;39/年（18岁以下），免费进入全荷兰500+博物馆！在 <a href="https://www.museum.nl/en/museumpass" target="_blank">museum.nl</a> 购买</li><li><strong>CJP</strong> \u2014 文化青年卡，各种文化活动折扣</li><li><strong>Koopzondag</strong> \u2014 周日开门商店常有折扣</li><li><strong>超市比价</strong> \u2014 Lidl和Aldi最便宜，AH每周Bonus折扣很大，Jumbo有最低价保证</li><li><strong>OV-fiets</strong> \u2014 火车站共享自行车&euro;4.80/天，300+取车点</li></ul><h4>补贴与省税</h4><ul><li><strong>30% Ruling</strong> \u2014 Expat最大的省税福利，前5年30%工资免税，记得让HR帮你在到达后4个月内申请！</li><li><strong>Zorgtoeslag</strong> \u2014 低收入可申请医疗补贴，在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请</li><li><strong>Huurtoeslag</strong> \u2014 租房补贴，根据收入和租金计算</li><li><strong>Kinderbijslag</strong> \u2014 儿童津贴，每个孩子每季度都有，在 <a href="https://www.svb.nl" target="_blank">SVB.nl</a> 申请</li><li><strong>Kinderopvangtoeslag</strong> \u2014 托儿所补贴，双职工家庭可申请</li></ul><div class="tip-box">\u{1F4A1} Museum Kaart是带娃神卡！全家办卡，周末随便去博物馆，年省数百欧。续费只要&euro;69/年。</div>'}
+     body:'<h4>日常生活省钱技巧</h4><ul><li><strong>Too Good To Go</strong> \u2014 APP抢购超市打折食品包，通常"魔法袋"只要&euro;3-5</li><li><strong>Scoupy / Eurosparen</strong> \u2014 超市优惠券和返现APP</li><li><strong>NS Dal Voordeel</strong> \u2014 &euro;6.35/月，火车非高峰时段40%折扣（同行最多3人也享受折扣）</li><li><strong>Museum Kaart</strong> \u2014 &euro;75/年（成人），&euro;39/年（18岁以下），免费进入全荷兰500+博物馆！在 <a href="https://www.museum.nl/en/museumpass" target="_blank">museum.nl</a> 购买</li><li><strong>CJP</strong> \u2014 文化青年卡，各种文化活动折扣</li><li><strong>Koopzondag</strong> \u2014 周日开门商店常有折扣</li><li><strong>超市比价</strong> \u2014 Lidl和Aldi最便宜，AH每周Bonus折扣很大，Jumbo有最低价保证</li><li><strong>OV-fiets</strong> \u2014 火车站共享自行车&euro;4.80/天，300+取车点</li></ul><h4>补贴与省税</h4><ul><li><strong>30% Ruling</strong> \u2014 Expat最大的省税福利，前5年30%工资免税，记得让HR帮你在到达后4个月内申请！</li><li><strong>Zorgtoeslag</strong> \u2014 低收入可申请医疗补贴，在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请</li><li><strong>Huurtoeslag</strong> \u2014 租房补贴，根据收入和租金计算</li><li><strong>Kinderbijslag</strong> \u2014 儿童津贴，每个孩子每季度都有，在 <a href="https://www.svb.nl" target="_blank">SVB.nl</a> 申请</li><li><strong>Kinderopvangtoeslag</strong> \u2014 托儿所补贴，双职工家庭可申请</li></ul><div class="tip-box">\u{1F4A1} Museum Kaart是带娃神卡！全家办卡，周末随便去博物馆，年省数百欧。续费只要&euro;69/年。</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>我们2014年在Rotterdam附近的小城买了第一套投资房产。荷兰房产长期来看是很好的保值手段，但一定要提前了解税务和贷款规则。</div>'}
 ];
 
 function buildGuides() {
