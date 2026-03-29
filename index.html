@@ -286,6 +286,12 @@
         /* ── MAP PAGE ── */
         .map-page{display:none;height:calc(100vh - 56px - 62px);position:relative}
         .map-page.active{display:flex;flex-direction:column}
+        .map-header{
+            background:linear-gradient(135deg,var(--blue) 0%,var(--teal) 100%);
+            color:white;padding:16px 16px 12px;flex-shrink:0;text-align:center;
+        }
+        .map-header h2{font-size:20px;font-weight:800;margin-bottom:4px}
+        .map-header p{font-size:13px;opacity:0.9}
         .map-filters{
             background:white;border-bottom:1px solid var(--gray-200);padding:8px 12px;
             display:flex;gap:6px;overflow-x:auto;flex-shrink:0;
@@ -298,8 +304,22 @@
             border:2px solid var(--gray-200);background:white;color:var(--gray-600);
             cursor:pointer;white-space:nowrap;transition:var(--transition);flex-shrink:0;
         }
-        .filter-chip.active{background:var(--orange);color:white;border-color:var(--orange)}
+        .filter-chip.active{border-color:var(--orange);background:var(--orange);color:white}
         .filter-chip:hover{border-color:var(--orange)}
+        .filter-chip[data-color]{border-color:var(--chip-border)}
+        .filter-chip[data-color].active{background:var(--chip-bg);border-color:var(--chip-bg);color:white}
+        .filter-chip-location{
+            background:linear-gradient(135deg,#E3F2FD,#BBDEFB);color:var(--blue);
+            border-color:#90CAF9;font-weight:700;
+        }
+        .filter-chip-location.active{background:var(--blue);color:white;border-color:var(--blue)}
+        .vp-age{
+            display:flex;gap:4px;margin:6px 0;flex-wrap:wrap;
+        }
+        .vp-age-tag{
+            display:inline-block;padding:2px 7px;border-radius:8px;font-size:10px;
+            font-weight:600;background:#E3F2FD;color:#1565C0;
+        }
         .map-city-search{
             position:absolute;top:58px;left:12px;z-index:800;
             background:white;border-radius:24px;box-shadow:var(--shadow-lg);
@@ -357,7 +377,7 @@
         .guide-toggle{font-size:20px;color:var(--gray-400);transition:transform 0.3s;flex-shrink:0}
         .guide-item.open .guide-toggle{transform:rotate(180deg)}
         .guide-content{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
-        .guide-item.open .guide-content{max-height:3000px}
+        .guide-item.open .guide-content{max-height:8000px}
         .guide-body{padding:0 20px 20px;font-size:14px;color:var(--gray-600);line-height:1.8}
         .guide-body h4{font-size:14px;font-weight:700;color:var(--blue);margin:14px 0 6px}
         .guide-body ul{padding-left:18px;margin-bottom:10px}
@@ -726,6 +746,10 @@
 
 <!-- ═══════════ MAP PAGE ═══════════ -->
 <div class="map-page" id="page-map">
+    <div class="map-header">
+        <h2 data-i18n="map_title">&#128118; &#20146;&#23376;&#22320;&#22270; / Kids &amp; Family Map</h2>
+        <p data-i18n="map_intro">&#21457;&#29616;&#33655;&#20848;250+&#20010;&#36866;&#21512;&#20840;&#23478;&#30340;&#22909;&#21435;&#22788; / Discover 250+ family-friendly places across the Netherlands</p>
+    </div>
     <div class="map-filters" id="mapFilters"></div>
     <div class="map-city-search">
         <span class="mcs-icon">&#128269;</span>
@@ -1024,7 +1048,7 @@
     </button>
     <button class="nav-item" onclick="switchPage('map')" data-nav="map">
         <span class="nav-icon">&#128506;</span>
-        <span data-i18n="nav_map">地图</span>
+        <span data-i18n="nav_map">亲子地图</span>
     </button>
     <button class="nav-item" onclick="switchPage('guides')" data-nav="guides">
         <span class="nav-icon">&#128214;</span>
@@ -1046,7 +1070,7 @@
 // ══════════════════════════════════════════════════════
 var I18N = {
   zh: {
-    brand:'荷生活 2.0', nav_home:'首页', nav_services:'服务', nav_map:'地图',
+    brand:'荷生活 2.0', nav_home:'首页', nav_services:'服务', nav_map:'亲子地图',
     nav_guides:'指南', nav_consult:'\u{1F4DA} 电子书', nav_consult_short:'电子书',
     hero_title:'在荷兰，从此不迷路', hero_sub:'华人一站式生活平台 \u00b7 生活服务 + 亲子探索 + 实用指南',
     hero_tag:'已服务 10,000+ 荷兰华人家庭',
@@ -1073,6 +1097,8 @@ var I18N = {
     svc_page_title:'生活服务', svc_page_desc:'荷兰华人生活必备资源，找房、看病、办事、购物、出行一站搞定',
     guide_page_title:'实用指南', guide_page_desc:'从新人落地到长期生活，最全面的荷兰华人生活攻略',
     map_search_ph:'搜索城市或场地...',
+    map_title:'\u{1F476} 亲子地图 / Kids & Family Map',
+    map_intro:'发现荷兰250+个适合全家的好去处 / Discover 250+ family-friendly places',
     con_hero_title:'让你的荷兰新生活，少走弯路', con_hero_desc:'我们是扎根荷兰多年的华人生活顾问团队，提供专业、贴心的一站式咨询服务',
     con_popular:'最受欢迎', con_1on1_title:'\u{1F4AC} 新人到荷兰 1对1 咨询',
     con_per_hour:'/ 小时', con_1on1_desc:'视频通话，一对一解答您关于荷兰生活的所有问题。涵盖：住房、医疗、教育、签证、税务、保险等。',
@@ -1118,6 +1144,8 @@ var I18N = {
     svc_page_title:'Life Services', svc_page_desc:'Essential resources for Chinese expats: housing, healthcare, government, shopping, transport',
     guide_page_title:'Practical Guides', guide_page_desc:'From arrival to settled life, the most comprehensive guide for Chinese in the Netherlands',
     map_search_ph:'Search city or venue...',
+    map_title:'\u{1F476} Kids & Family Map',
+    map_intro:'Discover 250+ family-friendly places across the Netherlands',
     con_hero_title:'Start Your Dutch Life on the Right Foot', con_hero_desc:'We are an experienced team of Chinese-Dutch life consultants offering professional, caring services',
     con_popular:'Most Popular', con_1on1_title:'\u{1F4AC} 1-on-1 Newcomer Consultation',
     con_per_hour:'/ hour', con_1on1_desc:'Video call consultation covering housing, healthcare, education, visas, tax, insurance and more.',
@@ -1163,6 +1191,8 @@ var I18N = {
     svc_page_title:'Diensten', svc_page_desc:'Essenti\u00eble bronnen: wonen, zorg, overheid, winkelen, vervoer',
     guide_page_title:'Praktische Gidsen', guide_page_desc:'Van aankomst tot gevestigd leven, de meest complete gids',
     map_search_ph:'Zoek stad of locatie...',
+    map_title:'\u{1F476} Kinderkaart / Kids & Family Map',
+    map_intro:'Ontdek 250+ gezinsvriendelijke plekken in heel Nederland',
     con_hero_title:'Begin goed in Nederland', con_hero_desc:'Ons ervaren team biedt professionele, persoonlijke dienstverlening',
     con_popular:'Populairst', con_1on1_title:'\u{1F4AC} 1-op-1 Adviesgesprek',
     con_per_hour:'/ uur', con_1on1_desc:'Videogesprek over wonen, zorg, onderwijs, visa, belasting en meer.',
@@ -1211,8 +1241,11 @@ function setLang(lang) {
         var key = el.getAttribute('data-i18n-ph');
         if (dict[key]) el.placeholder = dict[key];
     });
-    // Update venue count
+    // Update venue count and rebuild filter bar on lang change
     updateVenueCount();
+    if (mapInitialized) buildFilterBar();
+    // Rebuild guides for language
+    buildGuides();
 }
 
 // ══════════════════════════════════════════════════════
@@ -1278,7 +1311,15 @@ var GUIDES = [
     {icon:'\u{1F389}',zh:'\u8377\u5170\u8282\u65e5\u65e5\u5386 2026',en:'Dutch holiday calendar 2026',nl:'Nederlandse feestdagenkalender 2026',tag_zh:'\u751f\u6d3b',tag_en:'Lifestyle',tag_nl:'Leven',
      body:'<h4>2026 荷兰公共假日</h4><ul><li><strong>1月1日</strong> \u2014 Nieuwjaarsdag 新年</li><li><strong>4月3日</strong> \u2014 Goede Vrijdag 耶稣受难日</li><li><strong>4月5-6日</strong> \u2014 Pasen 复活节</li><li><strong>4月27日（周一）</strong> \u2014 Koningsdag 国王节（全民摆摊、橙色海洋！）</li><li><strong>5月5日</strong> \u2014 Bevrijdingsdag 解放日</li><li><strong>5月14日（周四）</strong> \u2014 Hemelvaartsdag 耶稣升天日（很多人周五也请假凑长周末）</li><li><strong>5月24-25日</strong> \u2014 Pinksteren 圣灵降临节</li><li><strong>12月5日</strong> \u2014 Sinterklaas 圣尼古拉斯节（孩子最爱！非公共假日但全民庆祝）</li><li><strong>12月25-26日</strong> \u2014 Kerstmis 圣诞节</li></ul><h4>学校假期 (2025-2026学年)</h4><p><em>注意：荷兰分北(Noord)、中(Midden)、南(Zuid)三个区域，假期时间略有不同。</em></p><ul><li><strong>Voorjaarsvakantie 春假</strong> \u2014 北部：2月21日-3月1日 | 中/南部：2月14-22日</li><li><strong>Meivakantie 五月假</strong> \u2014 全国统一：4月25日-5月3日</li><li><strong>Zomervakantie 暑假</strong> \u2014 北部：7月4日-8月16日 | 中部：7月18日-8月30日 | 南部：7月11日-8月23日</li><li><strong>Herfstvakantie 秋假</strong> \u2014 10月中（1周）</li><li><strong>Kerstvakantie 圣诞假</strong> \u2014 12月底（2周）</li></ul><p style="margin-top:8px;font-size:12px;color:var(--gray-400)">详细日期请查看 <a href="https://www.government.nl/topics/school-holidays" target="_blank">government.nl 学校假期页面</a></p><div class="tip-box">\u{1F4A1} Koningsdag是荷兰最大的户外派对！全城变橙色，人人可以在街上摆摊卖东西，带孩子必体验！提前买好橙色衣服。</div>'},
     {icon:'\u{1F4B0}',zh:'\u8377\u5170\u7701\u94b1\u653b\u7565',en:'Money-saving tips in NL',nl:'Geld besparen in NL',tag_zh:'\u7701\u94b1',tag_en:'Savings',tag_nl:'Besparen',
-     body:'<h4>日常生活省钱技巧</h4><ul><li><strong>Too Good To Go</strong> \u2014 APP抢购超市打折食品包，通常"魔法袋"只要&euro;3-5</li><li><strong>Scoupy / Eurosparen</strong> \u2014 超市优惠券和返现APP</li><li><strong>NS Dal Voordeel</strong> \u2014 &euro;6.35/月，火车非高峰时段40%折扣（同行最多3人也享受折扣）</li><li><strong>Museum Kaart</strong> \u2014 &euro;75/年（成人），&euro;39/年（18岁以下），免费进入全荷兰500+博物馆！在 <a href="https://www.museum.nl/en/museumpass" target="_blank">museum.nl</a> 购买</li><li><strong>CJP</strong> \u2014 文化青年卡，各种文化活动折扣</li><li><strong>Koopzondag</strong> \u2014 周日开门商店常有折扣</li><li><strong>超市比价</strong> \u2014 Lidl和Aldi最便宜，AH每周Bonus折扣很大，Jumbo有最低价保证</li><li><strong>OV-fiets</strong> \u2014 火车站共享自行车&euro;4.80/天，300+取车点</li></ul><h4>补贴与省税</h4><ul><li><strong>30% Ruling</strong> \u2014 Expat最大的省税福利，前5年30%工资免税，记得让HR帮你在到达后4个月内申请！</li><li><strong>Zorgtoeslag</strong> \u2014 低收入可申请医疗补贴，在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请</li><li><strong>Huurtoeslag</strong> \u2014 租房补贴，根据收入和租金计算</li><li><strong>Kinderbijslag</strong> \u2014 儿童津贴，每个孩子每季度都有，在 <a href="https://www.svb.nl" target="_blank">SVB.nl</a> 申请</li><li><strong>Kinderopvangtoeslag</strong> \u2014 托儿所补贴，双职工家庭可申请</li></ul><div class="tip-box">\u{1F4A1} Museum Kaart是带娃神卡！全家办卡，周末随便去博物馆，年省数百欧。续费只要&euro;69/年。</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>我们2014年在Rotterdam附近的小城买了第一套投资房产。荷兰房产长期来看是很好的保值手段，但一定要提前了解税务和贷款规则。</div>'}
+     body:'<h4>日常生活省钱技巧</h4><ul><li><strong>Too Good To Go</strong> \u2014 APP抢购超市打折食品包，通常"魔法袋"只要&euro;3-5</li><li><strong>Scoupy / Eurosparen</strong> \u2014 超市优惠券和返现APP</li><li><strong>NS Dal Voordeel</strong> \u2014 &euro;6.35/月，火车非高峰时段40%折扣（同行最多3人也享受折扣）</li><li><strong>Museum Kaart</strong> \u2014 &euro;75/年（成人），&euro;39/年（18岁以下），免费进入全荷兰500+博物馆！在 <a href="https://www.museum.nl/en/museumpass" target="_blank">museum.nl</a> 购买</li><li><strong>CJP</strong> \u2014 文化青年卡，各种文化活动折扣</li><li><strong>Koopzondag</strong> \u2014 周日开门商店常有折扣</li><li><strong>超市比价</strong> \u2014 Lidl和Aldi最便宜，AH每周Bonus折扣很大，Jumbo有最低价保证</li><li><strong>OV-fiets</strong> \u2014 火车站共享自行车&euro;4.80/天，300+取车点</li></ul><h4>补贴与省税</h4><ul><li><strong>30% Ruling</strong> \u2014 Expat最大的省税福利，前5年30%工资免税，记得让HR帮你在到达后4个月内申请！</li><li><strong>Zorgtoeslag</strong> \u2014 低收入可申请医疗补贴，在 <a href="https://www.toeslagen.nl" target="_blank">Toeslagen.nl</a> 申请</li><li><strong>Huurtoeslag</strong> \u2014 租房补贴，根据收入和租金计算</li><li><strong>Kinderbijslag</strong> \u2014 儿童津贴，每个孩子每季度都有，在 <a href="https://www.svb.nl" target="_blank">SVB.nl</a> 申请</li><li><strong>Kinderopvangtoeslag</strong> \u2014 托儿所补贴，双职工家庭可申请</li></ul><div class="tip-box">\u{1F4A1} Museum Kaart是带娃神卡！全家办卡，周末随便去博物馆，年省数百欧。续费只要&euro;69/年。</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>我们2014年在Rotterdam附近的小城买了第一套投资房产。荷兰房产长期来看是很好的保值手段，但一定要提前了解税务和贷款规则。</div>'},
+    {icon:'\u{1F193}',zh:'\u8377\u5170\u514d\u8d39\u4eb2\u5b50\u6d3b\u52a8 Top 20',en:'Top 20 Free Family Activities in NL',nl:'Top 20 Gratis Gezinsactiviteiten',tag_zh:'\u4eb2\u5b50',tag_en:'Family',tag_nl:'Gezin',
+     body:'<h4>荷兰20个最棒的免费亲子活动</h4><p>谁说带娃一定要花大钱？荷兰有大量免费或几乎免费的亲子去处：</p><ul><li><strong>1. Kinderboerderij（儿童农场）</strong> \u2014 全荷兰有600+个儿童农场，绝大部分免费入场。小朋友可以近距离接触山羊、兔子、鸡等动物。每个城市几乎都有！</li><li><strong>2. Scheveningen海滩</strong> \u2014 Den Haag最受欢迎的海滩，夏天免费玩沙、踏浪、挖贝壳。有免费儿童游乐区。</li><li><strong>3. Vondelpark（阿姆斯特丹）</strong> \u2014 荷兰最知名的城市公园，有大型免费儿童游乐场，夏天有免费露天音乐会。</li><li><strong>4. Kralingse Bos（鹿特丹）</strong> \u2014 Rotterdam最大的城市森林公园，可散步、骑车、湖边野餐。免费进入。</li><li><strong>5. Bibliotheek（图书馆）</strong> \u2014 荷兰图书馆活动丰富！免费讲故事、手工课、LEGO角，18岁以下免费办卡。推荐Rotterdam中央图书馆。</li><li><strong>6. Zuiderpark（鹿特丹）</strong> \u2014 超大免费公园，有多个游乐场、动物区和BBQ区域。</li><li><strong>7. Koningsdag国王节（4月27日）</strong> \u2014 全国最大的户外派对！孩子可在Vrijmarkt摆摊赚零花钱，全城免费橙色狂欢。</li><li><strong>8. Museumnacht / Museum weekends</strong> \u2014 每年有全国博物馆周末（Museumweekend），很多博物馆免费或大幅折扣开放。</li><li><strong>9. Natuurmonumenten自然保护区</strong> \u2014 散布全国的自然保护区，免费徒步、观鸟。<a href="https://www.natuurmonumenten.nl" target="_blank">natuurmonumenten.nl</a></li><li><strong>10. Speeltuin（社区游乐场）</strong> \u2014 荷兰每个社区都有免费或&euro;1-2入场的游乐场。很多有滑梯、秋千、沙坑、水上乐园。</li><li><strong>11. Kinderdijk风车群</strong> \u2014 世界遗产，外围区域免费散步和骑行，可以近距离看到19座风车。</li><li><strong>12. Markthal（鹿特丹）</strong> \u2014 全球最美的室内市场之一，免费参观壮观的天花板壁画和建筑。</li><li><strong>13. Plaswijckpark免费日</strong> \u2014 Rotterdam本地的亲子乐园，持Rotterdampas有免费入场日。</li><li><strong>14. Zaanse Schans风车村</strong> \u2014 村庄免费进入，可看风车、传统荷兰房屋（部分博物馆需门票）。</li><li><strong>15. Katwijk / Noordwijk海滩</strong> \u2014 相对安静的海滩，免费停车区域多，适合带小宝宝。</li><li><strong>16. Stadsboerderij（城市农场）</strong> \u2014 各大城市的城市农场，免费。Den Haag的Stadsboerderij Pluk特别推荐。</li><li><strong>17. Biesbosch国家公园</strong> \u2014 荷兰最大的淡水湿地，免费徒步和独木舟。<a href="https://www.np-debiesbosch.nl" target="_blank">np-debiesbosch.nl</a></li><li><strong>18. Sinterklaas Intocht（11月中旬）</strong> \u2014 圣尼古拉斯到达游行，各城市免费观看，孩子们的最爱！</li><li><strong>19. 4/5 mei herdenkingsdag</strong> \u2014 每年5月4日纪念日和5月5日解放日，全国各地有免费音乐节和活动。</li><li><strong>20. Oevers van de Maas（鹿特丹）</strong> \u2014 马斯河边散步，看Erasmusbrug，有免费的Watertaxi体验日。</li></ul><div class="tip-box">\u{1F4A1} 省钱利器：下载Too Good To Go APP，出游途中&euro;3-5就能买到咖啡店/面包房的"魔法袋"当午餐！</div>'},
+    {icon:'\u{1F327}',zh:'\u4e0b\u96e8\u5929\u5e26\u5a03\u53bb\u54ea\uff1f',en:'Rainy Day Activities with Kids',nl:'Regendag Activiteiten met Kinderen',tag_zh:'\u4eb2\u5b50',tag_en:'Family',tag_nl:'Gezin',
+     body:'<h4>荷兰下雨天室内亲子活动指南</h4><p>荷兰一年下雨130+天，雨天带娃是每个家长必须面对的课题！以下是经过验证的室内好去处：</p><h4>\u{1F3A0} 室内游乐场</h4><ul><li><strong>Monkey Town</strong> \u2014 全荷兰连锁室内游乐场，约20个分店。适合1-12岁，有滑梯、蹦床、球池。门票约&euro;10-13/人。<a href="https://www.monkeytown.eu" target="_blank">monkeytown.eu</a></li><li><strong>Ballorig</strong> \u2014 另一大连锁，全国30+分店，特别适合2-8岁。门票约&euro;9-11/人。<a href="https://www.ballorig.nl" target="_blank">ballorig.nl</a></li><li><strong>Jimmy\'s Speelparadijs</strong> \u2014 Amsterdam大型室内乐园，设施丰富。</li><li><strong>Fun Valley Dordrecht</strong> \u2014 Rotterdam附近，适合周末去。</li></ul><h4>\u{1F3DB} 博物馆</h4><ul><li><strong>NEMO Science Museum（Amsterdam）</strong> \u2014 5层楼的互动科学馆，孩子可以做实验、玩水、搭建。适合4-12岁。门票&euro;17.50，Museumkaart免费。<a href="https://www.nemosciencemuseum.nl" target="_blank">nemosciencemuseum.nl</a></li><li><strong>Naturalis（Leiden）</strong> \u2014 自然博物馆，有恐龙化石、活体动物。孩子超爱！Museumkaart免费。</li><li><strong>Spoorwegmuseum（Utrecht）</strong> \u2014 铁路博物馆，火车迷必去！有互动展和小火车。Museumkaart免费。</li><li><strong>Het Scheepvaartmuseum（Amsterdam）</strong> \u2014 航海博物馆，可以登上真的帆船。Museumkaart免费。</li><li><strong>Miniworld Rotterdam</strong> \u2014 世界最大的微缩景观之一，在Rotterdam！门票约&euro;16。</li></ul><h4>\u{1F3CA} 室内游泳</h4><ul><li><strong>Tikibad（Duinrell）</strong> \u2014 荷兰最受欢迎的热带室内水上乐园之一，滑梯超多！</li><li><strong>De Houtzagerij Rotterdam</strong> \u2014 Rotterdam的室内游泳池，有儿童区和家庭时段。</li><li><strong>各城市Zwembad</strong> \u2014 几乎每个城市都有室内游泳池，带娃票约&euro;5-8。Google搜"zwembad + 你的城市"。</li></ul><h4>\u{1F4DA} 图书馆</h4><ul><li><strong>Centrale Bibliotheek Rotterdam</strong> \u2014 超级棒的儿童区！有积木、绘本、电脑游戏区，全免费。</li><li><strong>OBA Amsterdam</strong> \u2014 阿姆斯特丹中央图书馆，6楼有免费儿童活动区。</li><li>全荷兰图书馆18岁以下免费办卡，经常有免费儿童活动（Voorleesuurtje讲故事时间）。</li></ul><div class="tip-box">\u{1F4A1} 雨天必备APP：下载Google Maps提前搜好附近的"binnenspeeltuin"（室内游乐场），说走就走！</div>'},
+    {icon:'\u{1F3AB}',zh:'\u8377\u5170\u4eb2\u5b50\u5e74\u7968\u653b\u7565',en:'Best Annual Passes for Families',nl:'Beste Jaarkaarten voor Gezinnen',tag_zh:'\u7701\u94b1',tag_en:'Savings',tag_nl:'Besparen',
+     body:'<h4>荷兰最值得买的亲子年票/年卡</h4><p>在荷兰带娃，年票绝对是最省钱的方式。以下是2026年最推荐的年票：</p><h4>1. Museumkaart 博物馆卡 \u2014 \u2B50 强烈推荐！</h4><ul><li>价格：成人&euro;75/年，18岁以下&euro;39/年（续费&euro;69）</li><li>权益：免费进入全荷兰500+博物馆！包括Rijksmuseum、Van Gogh Museum、NEMO、Naturalis等</li><li>划算程度：一个月去2-3次就回本。带娃周末去博物馆成了免费活动！</li><li>购买：<a href="https://www.museum.nl/en/museumpass" target="_blank">museum.nl</a>，也可在参与博物馆前台购买临时卡</li></ul><h4>2. Plaswijckpark 年卡 \u2014 Rotterdam家长必备</h4><ul><li>价格：&euro;65/人/年</li><li>权益：全年无限次进入Rotterdam最受欢迎的亲子公园。有动物区、游乐场、水上乐园、迷你高尔夫</li><li>划算程度：去4次回本（单次票约&euro;17）。住Rotterdam的话几乎每周都能去</li><li>购买：<a href="https://www.plaswijckpark.nl/tickets/" target="_blank">plaswijckpark.nl</a></li></ul><h4>3. Efteling 年卡</h4><ul><li>价格：Classic约&euro;23/月（约&euro;276/年），Plus/Premium更贵</li><li>权益：全年无限次进入荷兰最大主题乐园！不同等级有不同的可用日和折扣</li><li>划算程度：去3次以上就值了（单次票&euro;44-55）。Classic卡有黑日限制，注意学校假期可能不能用</li><li>购买：<a href="https://www.efteling.com/en/park/annual-pass" target="_blank">efteling.com</a></li></ul><h4>4. CJP Cultuurkaart 文化青年卡</h4><ul><li>价格：&euro;17.50/年</li><li>适用：30岁以下年轻人</li><li>权益：1000+文化场所折扣 \u2014 博物馆、电影院、剧院、音乐节、甚至部分商店</li><li>购买：<a href="https://expat.cjp.nl/" target="_blank">expat.cjp.nl</a></li></ul><h4>5. Holland Pass</h4><ul><li>价格：Small &euro;42 / Medium &euro;62 / Large &euro;82</li><li>适用：短期内想密集游览的家庭或游客</li><li>权益：包含多个景点门票+公共交通折扣。适合亲友来荷兰探亲时使用</li></ul><h4>6. NS Dal Voordeel 火车折扣卡</h4><ul><li>价格：&euro;6.35/月</li><li>权益：非高峰时段（工作日9:00后+周末全天）火车票40%折扣，同行3人也享受折扣！全家出行神器</li></ul><div class="tip-box">\u{1F4A1} 最佳组合：Museumkaart + NS Dal Voordeel，全家周末坐火车去各地博物馆，交通和门票都打折，年省&euro;500+！</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>我家的Museumkaart是用得最多的卡，几乎每个周末都带James去博物馆。NEMO去了不下20次！Plaswijckpark年卡也超值，夏天几乎每周去，孩子在那里认识了好几个小伙伴。</div>'},
+    {icon:'\u{1F9AA}',zh:'\u8377\u5170\u751f\u86a3\u5b63\uff1aOosterdam\u8d76\u6d77\u653b\u7565',en:'Oyster Picking at Oosterdam',nl:'Oesters rapen bij de Oesterdam',tag_zh:'\u751f\u6d3b',tag_en:'Lifestyle',tag_nl:'Leven',
+     body:'<h4>荷兰赶海：在Zeeland免费捡生蚝！</h4><p>没错，在荷兰可以免费捡野生生蚝！Zeeland省的Oosterschelde海域是荷兰最佳的赶海地点，其中<strong>Oesterdam（生蚝坝）</strong>是最受华人欢迎的捡生蚝地点。</p><h4>\u{1F4CD} 地点</h4><p><strong>Oesterdam</strong>，位于Zeeland省Tholen和Zuid-Beveland之间的大坝。从Rotterdam开车约1小时。停车免费，坝上有停车场。Google Maps搜索"Oesterdam"即可导航。</p><h4>\u{1F4C5} 最佳时间</h4><ul><li><strong>生蚝季：9月\u20134月</strong>（带R的月份）。5-8月是生蚝繁殖期，肉质不佳，不建议采集</li><li><strong>最佳月份：9月、10月、11月</strong> \u2014 天气还不太冷，生蚝肥美</li><li><strong>必须在退潮时去！</strong>退潮前后2小时是最佳采集时间</li><li>潮汐查询：<a href="https://waterinfo.rws.nl" target="_blank">waterinfo.rws.nl</a>（Rijkswaterstaat官方潮汐网站），选择Oosterschelde区域查看潮汐时间</li></ul><h4>\u{1F4CB} 规则</h4><ul><li>每人每天最多采集<strong>10公斤</strong>贝类（生蚝、贻贝、蛤蜊合计）</li><li>只能手工采集，不能使用机械工具</li><li>只能自用，不能售卖</li><li>注意保护环境，不要在禁区采集</li></ul><h4>\u{1F392} 必带物品</h4><ul><li><strong>雨靴或涉水鞋</strong> \u2014 岩石湿滑，必须穿！拖鞋绝对不行</li><li><strong>手套</strong> \u2014 生蚝壳非常锋利，建议厚手套</li><li><strong>桶/袋子</strong> \u2014 装生蚝用，带个结实的购物袋或桶</li><li><strong>生蚝刀</strong> \u2014 现场开壳吃用（Action或Blokker约&euro;3就能买到）</li><li><strong>柠檬+Tabasco</strong> \u2014 现场开壳配柠檬汁吃，绝了！</li><li><strong>矿泉水</strong> \u2014 清洗生蚝用</li><li><strong>防风外套</strong> \u2014 海边风大</li></ul><h4>\u{1F37D} 怎么吃</h4><ul><li><strong>现场生吃</strong>：用生蚝刀撬开，加柠檬汁，鲜甜无比！</li><li><strong>带回家</strong>：蒜蓉粉丝蒸、芝士焗、炭烤都好吃</li><li>生蚝可在冰箱保存3-5天（壳朝下，盖湿布）</li></ul><div class="tip-box">\u{1F4A1} 安全提示：退潮时岩石非常滑！带小朋友一定注意安全。建议穿防滑雨靴，不要去太深的水域。涨潮时立即撤离！</div><div class="experience-tip"><strong>\u{1F4A1} 来自我的亲身经历：</strong>每年秋天我们都会去Oesterdam赶海，James超喜欢在岩石上找螃蟹和贝壳。一次能捡满满一桶生蚝，回家蒜蓉粉丝蒸，全家吃到爽！记得一定要查好潮汐时间再出发，提前到才能赶上最佳退潮。周末去的人很多，建议早点出发抢好位置。</div>'}
 ];
 
 function buildGuides() {
@@ -1317,17 +1358,17 @@ var activeFilters = [];
 
 var CATEGORIES = [
     {id:'all',emoji:'\u{1F30D}',zh:'\u5168\u90e8',en:'All',nl:'Alle',color:'#1A5276'},
-    {id:'theme_park',emoji:'\u{1F3A2}',zh:'\u4e3b\u9898\u4e50\u56ed',en:'Theme Park',nl:'Pretpark',color:'#E74C3C'},
-    {id:'zoo',emoji:'\u{1F981}',zh:'\u52a8\u7269\u56ed',en:'Zoo',nl:'Dierentuin',color:'#E67E22'},
+    {id:'theme_park',emoji:'\u{1F3A2}',zh:'\u4e3b\u9898\u4e50\u56ed',en:'Theme Park',nl:'Pretpark',color:'#E67E22'},
+    {id:'zoo',emoji:'\u{1F981}',zh:'\u52a8\u7269\u56ed',en:'Zoo',nl:'Dierentuin',color:'#27AE60'},
     {id:'aquarium',emoji:'\u{1F42C}',zh:'\u6c34\u65cf\u9986',en:'Aquarium',nl:'Aquarium',color:'#3498DB'},
-    {id:'museum',emoji:'\u{1F3DB}',zh:'\u535a\u7269\u9986',en:'Museum',nl:'Museum',color:'#9B59B6'},
-    {id:'attraction',emoji:'\u2B50',zh:'\u666f\u70b9',en:'Attraction',nl:'Attractie',color:'#27AE60'},
-    {id:'nature',emoji:'\u{1F333}',zh:'\u81ea\u7136\u516c\u56ed',en:'Nature',nl:'Natuur',color:'#2ECC71'},
-    {id:'beach',emoji:'\u{1F3D6}',zh:'\u6d77\u6ee9',en:'Beach',nl:'Strand',color:'#1ABC9C'},
-    {id:'historic',emoji:'\u{1F3F0}',zh:'\u57ce\u5821\u53e4\u8ff9',en:'Castle',nl:'Kasteel',color:'#8E44AD'},
-    {id:'indoor_playground',emoji:'\u{1F3A0}',zh:'\u5ba4\u5185\u6e38\u4e50\u573a',en:'Indoor Play',nl:'Binnenspeeltuin',color:'#E91E63'},
+    {id:'museum',emoji:'\u{1F3DB}',zh:'\u535a\u7269\u9986',en:'Museum',nl:'Museum',color:'#0EA5A0'},
+    {id:'attraction',emoji:'\u2B50',zh:'\u666f\u70b9',en:'Attraction',nl:'Attractie',color:'#9B59B6'},
+    {id:'nature',emoji:'\u{1F333}',zh:'\u81ea\u7136\u516c\u56ed',en:'Nature',nl:'Natuur',color:'#1B7A1B'},
+    {id:'beach',emoji:'\u{1F3D6}',zh:'\u6d77\u6ee9',en:'Beach',nl:'Strand',color:'#2196F3'},
+    {id:'historic',emoji:'\u{1F3F0}',zh:'\u57ce\u5821\u53e4\u8ff9',en:'Castle',nl:'Kasteel',color:'#D4AC0D'},
+    {id:'indoor_playground',emoji:'\u{1F3E0}',zh:'\u5ba4\u5185\u6e38\u4e50\u573a',en:'Indoor Play',nl:'Binnenspeeltuin',color:'#E74C3C'},
     {id:'playground',emoji:'\u{1F6DD}',zh:'\u5ba4\u5916\u6e38\u4e50',en:'Playground',nl:'Speeltuin',color:'#FF5722'},
-    {id:'children_farm',emoji:'\u{1F404}',zh:'\u513f\u7ae5\u519c\u573a',en:'Kids Farm',nl:'Kinderboerderij',color:'#795548'},
+    {id:'children_farm',emoji:'\u{1F411}',zh:'\u513f\u7ae5\u519c\u573a',en:'Kids Farm',nl:'Kinderboerderij',color:'#795548'},
     {id:'sports',emoji:'\u26F7',zh:'\u8fd0\u52a8',en:'Sports',nl:'Sport',color:'#607D8B'},
     {id:'theatre',emoji:'\u{1F3AD}',zh:'\u5267\u9662/\u5f71\u9662',en:'Theatre',nl:'Theater',color:'#673AB7'},
     {id:'windmill',emoji:'\u{1F3E1}',zh:'\u98ce\u8f66',en:'Windmill',nl:'Molen',color:'#FF9800'},
@@ -1566,15 +1607,30 @@ function getCategoryForVenue(tags) {
     return CATEGORIES[5]; // default: attraction
 }
 
+var nearRotterdamActive = false;
+
 function buildFilterBar() {
     var container = document.getElementById('mapFilters');
     var html = '';
     for (var i = 0; i < CATEGORIES.length; i++) {
         var c = CATEGORIES[i];
         var label = currentLang === 'zh' ? c.zh : (currentLang === 'nl' ? c.nl : c.en);
-        html += '<div class="filter-chip' + (i === 0 ? ' active' : '') + '" data-cat="' + c.id + '" onclick="toggleFilter(this)">' + c.emoji + ' ' + label + '</div>';
+        html += '<div class="filter-chip' + (i === 0 ? ' active' : '') + '" data-cat="' + c.id + '" style="--chip-bg:' + c.color + ';--chip-border:' + c.color + '33" onclick="toggleFilter(this)">' + c.emoji + ' ' + label + '</div>';
     }
+    var nearLabel = currentLang === 'zh' ? '\u{1F4CD} \u9644\u8FD1Rotterdam' : (currentLang === 'nl' ? '\u{1F4CD} Bij Rotterdam' : '\u{1F4CD} Near Rotterdam');
+    html += '<div class="filter-chip filter-chip-location' + (nearRotterdamActive ? ' active' : '') + '" onclick="toggleNearRotterdam(this)">' + nearLabel + '</div>';
     container.innerHTML = html;
+}
+
+function toggleNearRotterdam(el) {
+    nearRotterdamActive = !nearRotterdamActive;
+    el.classList.toggle('active', nearRotterdamActive);
+    if (nearRotterdamActive && map) {
+        map.setView([51.92, 4.48], 10);
+    } else if (map) {
+        map.setView([52.2, 5.3], 7);
+    }
+    renderMarkers();
 }
 
 function toggleFilter(el) {
@@ -1600,6 +1656,23 @@ function toggleFilter(el) {
 
 var visibleCount = 0;
 
+function getAgeRange(tags) {
+    var cat = getCategoryForVenue(tags);
+    var ageMap = {
+        'theme_park':'0-3 / 3-6 / 6-12','zoo':'0-3 / 3-6 / 6-12','aquarium':'0-3 / 3-6 / 6-12',
+        'museum':'3-6 / 6-12','indoor_playground':'0-3 / 3-6','playground':'0-3 / 3-6 / 6-12',
+        'children_farm':'0-3 / 3-6','beach':'0-3 / 3-6 / 6-12','nature':'3-6 / 6-12',
+        'historic':'6-12','sports':'6-12','miniature_golf':'3-6 / 6-12'
+    };
+    return ageMap[cat.id] || '';
+}
+
+function distRotterdam(lat,lon) {
+    var dLat = (lat - 51.9244) * 111;
+    var dLon = (lon - 4.4777) * 111 * Math.cos(51.9244 * Math.PI / 180);
+    return Math.sqrt(dLat*dLat + dLon*dLon);
+}
+
 function renderMarkers() {
     if (!markers) return;
     markers.clearLayers();
@@ -1617,6 +1690,8 @@ function renderMarkers() {
         if (activeFilters.length > 0 && activeFilters.indexOf(cat.id) === -1) continue;
         // Filter by search
         if (searchVal && city.indexOf(searchVal) === -1 && name.indexOf(searchVal) === -1) continue;
+        // Filter by near Rotterdam (within ~30km)
+        if (nearRotterdamActive && distRotterdam(v.lat, v.lon) > 30) continue;
 
         var icon = L.divIcon({
             html:'<div class="custom-marker" style="background:' + cat.color + '">' + cat.emoji + '</div>',
@@ -1627,10 +1702,20 @@ function renderMarkers() {
         if (tags['addr:street']) { addr = tags['addr:street']; if (tags['addr:housenumber']) addr += ' ' + tags['addr:housenumber']; }
         if (tags['addr:city']) addr += (addr ? ', ' : '') + tags['addr:city'];
 
+        var ageRange = getAgeRange(tags);
+        var ageHtml = '';
+        if (ageRange) {
+            var ages = ageRange.split(' / ');
+            ageHtml = '<div class="vp-age">';
+            for (var a = 0; a < ages.length; a++) { ageHtml += '<span class="vp-age-tag">' + ages[a] + '</span>'; }
+            ageHtml += '</div>';
+        }
+
         var catLabel = currentLang === 'zh' ? cat.zh : (currentLang === 'nl' ? cat.nl : cat.en);
         var popup = '<div class="venue-popup">' +
             '<h3>' + (tags.name || 'Venue') + '</h3>' +
             '<span class="vp-cat" style="background:' + cat.color + '22;color:' + cat.color + '">' + cat.emoji + ' ' + catLabel + '</span>' +
+            ageHtml +
             (addr ? '<div class="vp-addr">\u{1F4CD} ' + addr + '</div>' : '') +
             (tags.opening_hours ? '<div class="vp-hours">\u{1F552} ' + tags.opening_hours + '</div>' : '') +
             '<div class="vp-links">' +
